@@ -1,9 +1,9 @@
-import React, {useState} from "react";
-import './Slider.css'
-import dataSlider from "./dataSlider"
-import BtnSlider from "./BtnSlider";
+import React, {useState} from 'react'
+import "./Slider.css"
+import dataSlider from './dataSlider'
+import BtnSlider from './BtnSlider'
 
-export default function Slider(){
+export default function Slider() {
 
     const [slideAnim, setSlideAnim] = useState({
         index: 1,
@@ -45,24 +45,19 @@ export default function Slider(){
         setSlideAnim({index:  index, inProgress: false})
     }
 
-    return(
-        <div className="container-slider">
+    return (
+        <div className='container-slider'>
             {
-                dataSlider.map((obj, index) =>{
+                dataSlider.map((obj, index) => {
                     return(
-                        <div 
-                        key={obj.id}
-                        className={slideAnim.index === index + 1 ? 
-                        "slide active-anim" : "slide"}
-                        >
-                            <img src={process.env.PUBLIC_URL + `/Imgs/img${index + 1}.jpg`} alt="" />
-                        </div>
-                    )
+                    <div key={obj.id}
+                        className={slideAnim.index === index + 1 ? "slide active-anim" : "slide"}>
+                            <img src={process.env.PUBLIC_URL + `/Imgs/img${index + 1}.jpg`} alt=''/>
+                    </div>)
                 })
             }
-            <BtnSlider moveSlide={nextSlide} direction={"next"} />
-            <BtnSlider moveSlide={prevSlide} direction={"prev"} />
-
+            <BtnSlider moveSlide={nextSlide} direction={"next"}/>
+            <BtnSlider moveSlide={prevSlide} direction={"prev"}/>
             <div className="container-dots">
                 {Array.from({length: 5}).map((item, index) => {
                     return <div 
@@ -71,7 +66,6 @@ export default function Slider(){
                     ></div>
                 })}
             </div>
-
         </div>
     )
 }
